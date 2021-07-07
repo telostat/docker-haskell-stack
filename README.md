@@ -3,6 +3,11 @@
 This repository provides base Docker images for building Haskell projects using
 [Stack](https://docs.haskellstack.org/en/stable/README/).
 
+Latest tags:
+
+- `lts-18.0`, `lts-18.0.20210707`
+- `lts-18.1`, `lts-18.1.20210707`
+
 ## Why?
 
 Building non-trivial Haskell projects usually takes quite some time. This can be
