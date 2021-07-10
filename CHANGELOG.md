@@ -1,13 +1,16 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Chores
+- integrate git-chglog, add CHANGELOG.md
+
 
 <a name="20210707"></a>
 ## 20210707 - 2021-07-07
-### Chore
+### Chores
 - **release:** 20210707
 
-### Feat
+### Features
 - add initial build configuration
 
 
