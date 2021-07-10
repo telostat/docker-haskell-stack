@@ -46,6 +46,7 @@ http-types            \
 iconv                 \
 lens                  \
 megaparsec            \
+monad-parallel        \
 mtl                   \
 network-uri           \
 optparse-applicative  \
