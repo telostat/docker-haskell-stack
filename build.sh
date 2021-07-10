@@ -1,17 +1,55 @@
 #!/usr/bin/env sh
 
-## Get latest tag:
-_latest_tag="$(git describe --tags --abbrev=0 2> /dev/null || printf "")"
+## Fail on error:
+set -e
 
-## Get the version:
-_version="${1:-"${_latest_tag}"}"
+## Declare arguments:
+_REGISTRY=""
+_REPOSITORY=""
+_RESOLVER=""
+_VERSION=""
 
-## Check if we have a version:
-if [ -z "${_version}" ]; then
-    echo >&2 "No version is specified and there are no tags. Exiting..."
+## Function that prints the usage and exits:
+_usage () {
+    echo >&2 "Usage: ./build.sh -r <REGISTRY> -d <REPOSITORY> -s <RESOLVER> -v <VERSION>"
     exit 1
-else
-    echo "Version is \"${_version}\"."
+}
+
+## Parse arguments:
+while getopts "r:d:s:v:" arg; do
+    case $arg in
+	r)
+	    _REGISTRY="${OPTARG}"
+	    ;;
+	d)
+	    _REPOSITORY="${OPTARG}"
+	    ;;
+	s)
+	    _RESOLVER="${OPTARG}"
+	    ;;
+	v)
+	    _VERSION="${OPTARG}"
+	    ;;
+	*)
+	    _usage
+	    ;;
+    esac
+done
+shift $((OPTIND-1))
+
+## Check arguments:
+if [ -z "${_REGISTRY}" ]; then
+    echo >&2 "Missing registry argument."
+    _usage
+elif [ -z "${_REPOSITORY}" ]; then
+    echo >&2 "Missing repository argument."
+    _usage
+elif [ -z "${_RESOLVER}" ]; then
+    echo >&2 "Missing resolver argument."
+    _usage
+elif [ -z "${_VERSION}" ]; then
+    echo >&2 "Missing version argument."
+    _usage
 fi
 
 ## Function that builds and tags an image.
@@ -28,24 +66,12 @@ _build_and_tag () {
     ## Get the version:
     _version="${4}"
 
-    ## Build the image tag (specific):
-    _tag1="$(printf "%s/%s:%s.%s" "${_registry}" "${_repository}" "${_resolver}" "${_version}")"
-
-    ## Build the image tag (general):
-    _tag2="$(printf "%s/%s:%s" "${_registry}" "${_repository}" "${_resolver}")"
-
-    ## Log it:
-    echo "Attempting to build ${_tag1}"
+    ## Construct the image tag (specific):
+    _tag="$(printf "%s/%s:%s.%s" "${_registry}" "${_repository}" "${_resolver}" "${_version}")"
 
     ## Build the image:
-    docker build -t "${_tag1}" --build-arg _RESOLVER="${_resolver}" .
-
-    ## Log it:
-    echo "Attempting to create tag ${_tag2} based on ${_tag1}"
-
-    ## Tag the image:
-    docker tag "${_tag1}" "${_tag2}"
+    docker build -t "${_tag}" --build-arg RESOLVER="${_resolver}" .
 }
 
-_build_and_tag "telostat" "docker-haskell-stack" "lts-18.0" "${_version}"
-_build_and_tag "telostat" "docker-haskell-stack" "lts-18.1" "${_version}"
+## Build and tag:
+_build_and_tag "${_REGISTRY}" "${_REPOSITORY}" "${_RESOLVER}" "${_VERSION}"
