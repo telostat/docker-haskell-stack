@@ -54,9 +54,6 @@ git commit -am "chore(release): ${_VERSION}"
 ## Tag the latest release commit:
 git tag -f -a -m "Release ${_VERSION}" "${_VERSION}"
 
-## Push to origin:
-git push --follow-tags origin main
-
 ## Function that builds, tags and pushes an image.
 _build_tag_push () {
     ## Get the registry name:
@@ -95,6 +92,9 @@ _build_tag_push () {
     docker push "${_tag2}"
 }
 
-## Build, tag and push:
+## Build, tag and push Docker images:
 _build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.0" "${_VERSION}"
 _build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.1" "${_VERSION}"
+
+## Finally, git-push to origin:
+git push --follow-tags origin main
