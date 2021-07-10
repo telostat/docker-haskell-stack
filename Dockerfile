@@ -15,6 +15,7 @@ curl            \
 git             \
 haskell-stack   \
 libpcre3-dev    \
+libpq-dev       \
 libtinfo-dev    \
 nano            \
 netbase         \
@@ -23,6 +24,7 @@ zlib1g-dev      \
 
 ## Define a list of Haskell packages to install as per our resolver:
 ARG _TO_STACK="       \
+QuickCheck            \
 aeson                 \
 aeson-casing          \
 base64-bytestring     \
@@ -50,8 +52,8 @@ optparse-applicative  \
 path                  \
 path-io               \
 pcre-light            \
+postgresql-simple     \
 process               \
-QuickCheck            \
 quickcheck-instances  \
 raw-strings-qq        \
 refined               \
