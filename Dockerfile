@@ -5,10 +5,10 @@ FROM ubuntu:20.04
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ## Define the resolver version we want to work with:
-ARG _RESOLVER="lts-18.0"
+ARG RESOLVER="lts-18.0"
 
 ## Define list of apt packages to install:
-ARG _TO_APT="   \
+ARG TO_APT="    \
 build-essential \
 ca-certificates \
 curl            \
@@ -23,7 +23,7 @@ zlib1g-dev      \
 "
 
 ## Define a list of Haskell packages to install as per our resolver:
-ARG _TO_STACK="       \
+ARG TO_STACK="        \
 QuickCheck            \
 aeson                 \
 aeson-casing          \
@@ -88,9 +88,9 @@ zlib                  \
 RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selections && \
     apt-get update -qy                                                             && \
     apt-get upgrade -qy                                                            && \
-    apt-get install -qy --no-install-recommends ${_TO_APT}                         && \
+    apt-get install -qy --no-install-recommends ${TO_APT}                          && \
     stack upgrade --binary-only                                                    && \
-    stack --resolver "${_RESOLVER}" install ${_TO_STACK}                           && \
+    stack --resolver "${RESOLVER}" install ${TO_STACK}                             && \
     apt-get clean autoclean                                                        && \
     apt-get autoremove -y                                                          && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
