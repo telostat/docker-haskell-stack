@@ -3,7 +3,7 @@
 This repository provides base Docker images for building Haskell projects using
 [Stack](https://docs.haskellstack.org/en/stable/README/).
 
-Latest tags:
+## Latest Tags
 
 - `lts-18.0`, `lts-18.0.20210707`
 - `lts-18.1`, `lts-18.1.20210707`
@@ -20,20 +20,6 @@ Images under this repository stick on to specific [Stack
 resolvers](https://www.stackage.org/#about), builds and installs widely used (at
 least in our shop) Haskell packages in the given resolver. These images can then
 be used as base images to compile Haskell Stack projects.
-
-## Building
-
-To build a Docker image with default build arguments:
-
-```{bash}
-docker build -t my-docker-haskell-stack .
-```
-
-To build a Docker image with an alternative resolver:
-
-```{bash}
-docker build -t my-docker-haskell-stack --build-arg _RESOLVER="lts-18.1" .
-```
 
 ## Issues
 
@@ -54,3 +40,36 @@ resolver.
 Our images are built on top of stock [Ubuntu
 20.04](https://hub.docker.com/_/ubuntu) Docker image. You may experience linking
 issues if your build image (or runtime) is different than Ubuntu 20.04.
+
+
+## Building Locally
+
+To build a Docker image with default build arguments:
+
+```{bash}
+docker build -t my-docker-haskell-stack .
+```
+
+To build a Docker image with an alternative resolver:
+
+```{bash}
+docker build -t my-docker-haskell-stack --build-arg RESOLVER="lts-18.1" .
+```
+
+## Release Process
+
+First try to build the image to ensure that everything (!) is OK:
+
+```
+./build.sh -r telostat -d docker-haskell-stack -s lts-18.0 -v testing
+```
+
+Finally, update versions in this `README.md` file (see **Latest Tags**
+at the top of the file) and trigger the release process:
+
+```
+./release.sh -r telostat -d docker-haskell-stack -v <VERSION>
+```
+
+Release process performs git commits and taging, and then, it builds
+Docker images, retags and pushes them to the Docker registry.
