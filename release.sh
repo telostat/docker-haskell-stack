@@ -81,7 +81,7 @@ _build_tag_push () {
     echo "Attempting to build ${_tag1}..."
 
     ## Build the image:
-    ./build.sh -r "${_registry}" -d "${_repository}" "${_resolver}" "${_version}"
+    ./build.sh -r "${_registry}" -d "${_repository}" -s "${_resolver}" -v "${_version}"
 
     ## Log it:
     echo "Attempting to create tag ${_tag2} based on ${_tag1}..."
