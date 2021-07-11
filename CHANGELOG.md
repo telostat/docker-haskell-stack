@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="20210711"></a>
+## [20210711] - 2021-07-11
+### Chores
+- **build:** do not git-push until the end while releasing
+- **docs:** update README with latest tags
+
+### Features
+- add further dependencies
+
+
 <a name="20210710"></a>
 ## [20210710] - 2021-07-10
 ### Bug Fixes
@@ -13,6 +23,7 @@
 - update git-chglog configuration
 - integrate git-chglog, add CHANGELOG.md
 - **docs:** update README
+- **release:** 20210710
 
 ### Features
 - add monad-parallel dependency
@@ -28,5 +39,6 @@
 - add initial build configuration
 
 
-[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20210710...HEAD
+[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20210711...HEAD
+[20210711]: https://github.com/telostat/docker-haskell-stack/compare/20210710...20210711
 [20210710]: https://github.com/telostat/docker-haskell-stack/compare/20210707...20210710
