@@ -2,11 +2,18 @@
 ## [Unreleased]
 
 
+<a name="20210909"></a>
+## [20210909] - 2021-09-09
+### Features
+- add lts-18.{6,8,9}
+
+
 <a name="20210711"></a>
 ## [20210711] - 2021-07-11
 ### Chores
 - **build:** do not git-push until the end while releasing
 - **docs:** update README with latest tags
+- **release:** 20210711
 
 ### Features
 - add further dependencies
@@ -39,6 +46,7 @@
 - add initial build configuration
 
 
-[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20210711...HEAD
+[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20210909...HEAD
+[20210909]: https://github.com/telostat/docker-haskell-stack/compare/20210711...20210909
 [20210711]: https://github.com/telostat/docker-haskell-stack/compare/20210710...20210711
 [20210710]: https://github.com/telostat/docker-haskell-stack/compare/20210707...20210710
