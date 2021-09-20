@@ -65,37 +65,22 @@ _build_tag_push () {
     ## Get the resolver:
     _resolver="${3}"
 
-    ## Get the version:
-    _version="${4}"
-
-    ## Build the image tag (specific):
-    _tag1="$(printf "%s/%s:%s.%s" "${_registry}" "${_repository}" "${_resolver}" "${_version}")"
-
-    ## Build the image tag (general):
-    _tag2="$(printf "%s/%s:%s" "${_registry}" "${_repository}" "${_resolver}")"
+    ## Build the image tag:
+    _tag="$(printf "%s/%s:%s" "${_registry}" "${_repository}" "${_resolver}")"
 
     ## Log it:
-    echo "Attempting to build ${_tag1}..."
+    echo "Attempting to build ${_tag}..."
 
     ## Build the image:
-    ./build.sh -r "${_registry}" -d "${_repository}" -s "${_resolver}" -v "${_version}"
+    ./build.sh -r "${_registry}" -d "${_repository}" -s "${_resolver}"
 
-    ## Log it:
-    echo "Attempting to create tag ${_tag2} based on ${_tag1}..."
-
-    ## Tag the image:
-    docker tag "${_tag1}" "${_tag2}"
-
-    ## Push images:
-    echo "Attempting to push images..."
-    docker push "${_tag1}"
-    docker push "${_tag2}"
+    ## Push image:
+    echo "Attempting to push the image..."
+    docker push "${_tag}"
 }
 
 ## Build, tag and push Docker images:
-_build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.6" "${_VERSION}"
-_build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.8" "${_VERSION}"
-_build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.9" "${_VERSION}"
+_build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.10"
 
 ## Finally, git-push to origin:
 git push --follow-tags origin main

@@ -7,11 +7,10 @@ set -e
 _REGISTRY=""
 _REPOSITORY=""
 _RESOLVER=""
-_VERSION=""
 
 ## Function that prints the usage and exits:
 _usage () {
-    echo >&2 "Usage: ./build.sh -r <REGISTRY> -d <REPOSITORY> -s <RESOLVER> -v <VERSION>"
+    echo >&2 "Usage: ./build.sh -r <REGISTRY> -d <REPOSITORY> -s <RESOLVER>"
     exit 1
 }
 
@@ -26,9 +25,6 @@ while getopts "r:d:s:v:" arg; do
 	    ;;
 	s)
 	    _RESOLVER="${OPTARG}"
-	    ;;
-	v)
-	    _VERSION="${OPTARG}"
 	    ;;
 	*)
 	    _usage
@@ -47,9 +43,6 @@ elif [ -z "${_REPOSITORY}" ]; then
 elif [ -z "${_RESOLVER}" ]; then
     echo >&2 "Missing resolver argument."
     _usage
-elif [ -z "${_VERSION}" ]; then
-    echo >&2 "Missing version argument."
-    _usage
 fi
 
 ## Function that builds and tags an image.
@@ -63,15 +56,12 @@ _build_and_tag () {
     ## Get the resolver:
     _resolver="${3}"
 
-    ## Get the version:
-    _version="${4}"
-
     ## Construct the image tag (specific):
-    _tag="$(printf "%s/%s:%s.%s" "${_registry}" "${_repository}" "${_resolver}" "${_version}")"
+    _tag="$(printf "%s/%s:%s" "${_registry}" "${_repository}" "${_resolver}")"
 
     ## Build the image:
     docker build -t "${_tag}" --build-arg RESOLVER="${_resolver}" .
 }
 
 ## Build and tag:
-_build_and_tag "${_REGISTRY}" "${_REPOSITORY}" "${_RESOLVER}" "${_VERSION}"
+_build_and_tag "${_REGISTRY}" "${_REPOSITORY}" "${_RESOLVER}"
