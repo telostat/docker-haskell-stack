@@ -5,8 +5,9 @@ This repository provides base Docker images for building Haskell projects using
 
 ## Latest Tags
 
-- `lts-18.0`, `lts-18.0.20210710`
-- `lts-18.1`, `lts-18.1.20210710`
+- `lts-18.12` (`ghc-8.10.7`)
+- `lts-18.8`, (`ghc-8.10.6`)
+- `lts-18.6`, (`ghc-8.10.4`)
 
 ## Why?
 
