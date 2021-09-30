@@ -2,8 +2,17 @@
 ## [Unreleased]
 
 
+<a name="20210930"></a>
+## [20210930] - 2021-09-30
+### Features
+- add lts-18.12
+
+
 <a name="20210920"></a>
 ## [20210920] - 2021-09-20
+### Chores
+- **release:** 20210920
+
 ### Features
 - do not tag images with version, prepare for lts-18.10
 
@@ -55,7 +64,8 @@
 - add initial build configuration
 
 
-[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20210920...HEAD
+[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20210930...HEAD
+[20210930]: https://github.com/telostat/docker-haskell-stack/compare/20210920...20210930
 [20210920]: https://github.com/telostat/docker-haskell-stack/compare/20210909...20210920
 [20210909]: https://github.com/telostat/docker-haskell-stack/compare/20210711...20210909
 [20210711]: https://github.com/telostat/docker-haskell-stack/compare/20210710...20210711
