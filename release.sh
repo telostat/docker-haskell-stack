@@ -80,7 +80,7 @@ _build_tag_push () {
 }
 
 ## Build, tag and push Docker images:
-_build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.14"
+_build_tag_push "${_REGISTRY}" "${_REPOSITORY}" "lts-18.16"
 
 ## Finally, git-push to origin:
 git push --follow-tags origin main
