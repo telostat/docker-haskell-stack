@@ -26,6 +26,7 @@ zlib1g-dev      \
 ARG TO_STACK="        \
 aeson                 \
 aeson-casing          \
+amazonka-s3           \
 async                 \
 base16-bytestring     \
 base64-bytestring     \
@@ -39,9 +40,12 @@ containers            \
 cryptohash-sha1       \
 cryptonite            \
 data-default          \
+deriving-aeson        \
 directory             \
 doctest               \
 either                \
+email-validate        \
+envy                  \
 exceptions            \
 file-embed            \
 filepath              \
@@ -55,14 +59,17 @@ hlint                 \
 hslua                 \
 hspec                 \
 http-client           \
+http-client-tls       \
 http-conduit          \
 http-types            \
 iconv                 \
 lens                  \
 lens-aeson            \
 megaparsec            \
+modern-uri            \
 monad-logger          \
 monad-parallel        \
+monad-time            \
 mtl                   \
 network-uri           \
 optparse-applicative  \
@@ -98,9 +105,11 @@ transformers          \
 typed-process         \
 tz                    \
 tzdata                \
+unliftio              \
 unordered-containers  \
 uri-encode            \
 utf8-string           \
+uuid                  \
 uuid-types            \
 validation            \
 vector                \
