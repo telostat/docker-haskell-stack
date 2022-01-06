@@ -72,6 +72,7 @@ monad-parallel        \
 monad-time            \
 mtl                   \
 network-uri           \
+opaleye               \
 optparse-applicative  \
 parsec                \
 path                  \
@@ -80,6 +81,7 @@ pcre-light            \
 postgresql-simple     \
 pptable               \
 process               \
+product-profunctors   \
 profunctors           \
 QuickCheck            \
 quickcheck-instances  \
@@ -90,6 +92,7 @@ refined               \
 resource-pool         \
 safe                  \
 safe-decimal          \
+safe-money            \
 sbv                   \
 scientific            \
 scotty                \
