@@ -2,8 +2,17 @@
 ## [Unreleased]
 
 
+<a name="20220301"></a>
+## [20220301] - 2022-03-01
+### Features
+- add lts-18.27
+
+
 <a name="20220107"></a>
 ## [20220107] - 2022-01-07
+### Chores
+- **release:** 20220107
+
 ### Features
 - add lts-18.21
 - install additional packages
@@ -129,7 +138,8 @@
 - add initial build configuration
 
 
-[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20220107...HEAD
+[Unreleased]: https://github.com/telostat/docker-haskell-stack/compare/20220301...HEAD
+[20220301]: https://github.com/telostat/docker-haskell-stack/compare/20220107...20220301
 [20220107]: https://github.com/telostat/docker-haskell-stack/compare/20211219...20220107
 [20211219]: https://github.com/telostat/docker-haskell-stack/compare/20211125...20211219
 [20211125]: https://github.com/telostat/docker-haskell-stack/compare/20211118...20211125
