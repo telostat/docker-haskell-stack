@@ -5,7 +5,7 @@ This repository provides base Docker images for building Haskell projects using
 
 ## Latest Tags
 
-- `lts-18.27` (`ghc-8.10.7`)
+- `lts-18.28` (`ghc-8.10.8`)
 - `lts-18.8` (`ghc-8.10.6`)
 - `lts-18.6` (`ghc-8.10.4`)
 
@@ -61,14 +61,14 @@ docker build -t my-docker-haskell-stack --build-arg RESOLVER="lts-18.1" .
 
 First try to build the image to ensure that everything (!) is OK:
 
-```
-./build.sh -r telostat -d docker-haskell-stack -s lts-18.0 -v testing
+```sh
+./build.sh -r telostat -d docker-haskell-stack -v testing
 ```
 
 Finally, update versions in this `README.md` file (see **Latest Tags**
 at the top of the file) and trigger the release process:
 
-```
+```sh
 ./release.sh -r telostat -d docker-haskell-stack -v <VERSION>
 ```
 
